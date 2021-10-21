@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import { withFormik } from 'formik';
 
+import api from './src/services/api'
+
 const Form = (props) => (
   <View style={styles.container}>
     <TextInput
@@ -25,6 +27,7 @@ const Form = (props) => (
 );
 const styles = StyleSheet.create({
   input: {
+    width: '50%',
     height: 40,
     margin: 12,
     borderWidth: 1,
@@ -36,11 +39,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   password: {
+    width: '50%',
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10,
-    autoComplete: 'password',
+    padding: 10
   }
 });
 
@@ -50,3 +53,16 @@ export default withFormik({
     console.log(values);
   }
 })(Form);
+
+export default function App() {
+  const [login, setLogin] = useState();
+
+  useEffect(() => {
+    api
+      .get("/api/v1/login/"+login)
+      .then((response) => setLogin(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+}
