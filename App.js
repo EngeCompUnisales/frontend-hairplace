@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Button } from 'react-native';
 import { withFormik } from 'formik';
 
 const styles = StyleSheet.create({
