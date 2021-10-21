@@ -8,9 +8,9 @@ const Form = (props) => (
   <View style={styles.container}>
     <TextInput
       style={styles.input}
-      placeholder="E-Mail"
-      value={props.values.email}
-      onChangeText={text => props.setFieldValue('email', text)}
+      placeholder="Login"
+      value={props.values.login}
+      onChangeText={text => props.setFieldValue('login', text)}
     />
     <TextInput
       secureTextEntry={true}
@@ -48,21 +48,12 @@ const styles = StyleSheet.create({
 });
 
 export default withFormik({
-  mapPropsToValues: () => ({ email: '', password: '' }),
+  mapPropsToValues: () => ({ login: '', password: '' }),
   handleSubmit: (values) => {
-    console.log(values);
+  
+    api.get(`/api/v1/login/${values.login}`)
+    .then(res => {
+      console.log(res.data);
+    })  
   }
 })(Form);
-
-export default function App() {
-  const [login, setLogin] = useState();
-
-  useEffect(() => {
-    api
-      .get("/api/v1/login/"+login)
-      .then((response) => setLogin(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
-}
