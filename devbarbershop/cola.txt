@@ -1,0 +1,45 @@
+*instala expo
+npm install -g expo-cli
+
+*permitir pra executar o expo(entre outros) powershell
+set-executionpolicy remotesigned
+
+*inicia o expo(demora 1 semana)
+expo init
+
+npm start
+npm install
+expo start
+
+
+tempo:
+
+componentes:
+
+npm install styled-components / npm install @types/styled-components-react-native
+npm install @react-navigation/native
+npm install @react-navigation/stack
+npm install @react-navigation/bottom-tabs
+npm install @react-native-async-storage/async-storage
+npm install @react-native-community/geolocation
+npm install react-native-permissions
+npm install react-native-swiper
+npm install react-native-svg / expo install react-native-svg
+npm install react-native-svg-transformer
+
+expo install react-native-svg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
