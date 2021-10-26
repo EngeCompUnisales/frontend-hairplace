@@ -55,7 +55,7 @@ export default () => {
         <Container>
 
             <InputArea>
-            <img src={BarberLogo} alt='BarberLogo' width="100%" height="160" />
+            <BarberLogo alt='BarberLogo' width="100%" height="160" />
                 <SignInput 
                     placeholder="Digite seu email"
                     value={emailField}
