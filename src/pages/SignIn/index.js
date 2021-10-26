@@ -31,10 +31,10 @@ export default () => {
     
 
     const handleSingClick = async () => {
-        if(emailField != '' && passwordField != '') {
+        if(emailField != '') {
             
-            let json = await Api.signIn(emailField, passwordField);
-            if(json.token) {
+            let json = await Api.signIn(emailField);
+            if(json != null ?? json != '') {
 
             } else {
                 alert('E-mail ou senha errados');

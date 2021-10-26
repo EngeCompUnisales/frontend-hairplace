@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-//import AsyncStorage from '@react-native-community/async-storage';
 
 import { UserContext } from '../../contexts/UserContext';
 
@@ -16,7 +15,6 @@ import {
 
 import SignInput from '../../components/SignInput';
 
-import BarberLogo from "../../assets/barberlogo.svg";
 
 
 export default () => {
@@ -24,6 +22,7 @@ export default () => {
     const navigation = useNavigation();
 
     const [emailField, setEmailField] = useState('');
+    const [nameField, setNameField] = useState('');
     const [passwordField, setPasswordField] = useState('');
 
     
@@ -34,7 +33,7 @@ export default () => {
 */
       const handleMessageButtonClick = () => {
         navigation.reset({
-            routes: [{name: 'SignUp'}]
+            routes: [{name: 'SignIn'}]
         });
     }
 
@@ -44,6 +43,12 @@ export default () => {
 
             <InputArea>
                 
+                <SignInput 
+                        placeholder="Digite seu nome"
+                        value={nameField}
+                        onChangeText={t=>setNameField(t)}
+                />
+
                 <SignInput 
                     placeholder="Digite seu email"
                     value={emailField}
@@ -61,8 +66,7 @@ export default () => {
                 </CustomButton>
 
                 <SignMessageButton onPress={handleMessageButtonClick}>
-                    <SignMessageButtonText>Ainda não possui uma conta?</SignMessageButtonText>
-                    <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
+                    <SignMessageButtonTextBold>Voltar</SignMessageButtonTextBold>
                 </SignMessageButton>
             
             </InputArea>
