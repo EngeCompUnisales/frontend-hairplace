@@ -35,7 +35,8 @@ export default () => {
             
             let json = await Api.signIn(emailField);
             if(json != null ?? json != '') {
-
+                console.log(json)
+                handleMessageButtonClickLoginSucess();
             } else {
                 alert('E-mail ou senha errados');
             }
@@ -44,7 +45,13 @@ export default () => {
         }
     }
 
-      const handleMessageButtonClick = () => {
+    const handleMessageButtonClick = () => {
+        navigation.reset({
+            routes: [{name: 'SignUp'}]
+        });
+    }
+
+    const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
             routes: [{name: 'SignUp'}]
         });

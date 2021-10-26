@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from 'react-native';
 
 const BASE_API = 'http://api-hairplace.herokuapp.com';
 
