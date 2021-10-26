@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import UserContextProvider from './src/contexts/userContext';
+import UserContextProvider from './src/contexts/UserContext';
 import MainStack from './src/stacks/mainstack';
 
 export default () => {
