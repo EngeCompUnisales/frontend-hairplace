@@ -21,7 +21,9 @@ import BarberLogo from "../../assets/barberlogo.svg";
 
 export default () => {
 
-    const navigation = useNavigation();
+    const { dispatch: userDispatch} = useNavigation(UserContext);
+
+    const navigation = useNavigation('');
 
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
@@ -64,10 +66,9 @@ export default () => {
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'Home'}]
+            routes: [{name: 'MainTab'}]
         });
     }
-
 
     return (
         <Container>
