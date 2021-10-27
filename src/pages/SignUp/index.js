@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { UserContext } from '../../contexts/UserContext';
 
 import {
     Container,
@@ -9,11 +8,11 @@ import {
     CustomButton,
     CustomButtonText,
     SignMessageButton,
-    SignMessageButtonText,
     SignMessageButtonTextBold
 } from './styles';
 
 import SignInput from '../../components/SignInput';
+import api from '../../Api';
 
 
 
@@ -24,39 +23,54 @@ export default () => {
     const [emailField, setEmailField] = useState('');
     const [nameField, setNameField] = useState('');
     const [passwordField, setPasswordField] = useState('');
+    const [cpfField, setCpfField] = useState('');
+    const [numberField, setNumberField] = useState('');
+    const [birthDateField, setBirthDateField] = useState('');
 
     
-
-/*    const handleSignClick = async () => {
-        if(nameField != '' && emailField != '' && passwordField != '') {
-            let res = await Api.signUp(nameField, emailField, passwordField);
-            
-            if(res.token) {
-                await AsyncStorage.setItem('token', res.token);
-
-                userDispatch({
-                    type: 'setAvatar',
-                    payload:{
-                        avatar: res.data.avatar
-                    }
-                });
-
-                navigation.reset({
-                    routes:[{name:'MainTab'}]
-                });
-
-            } else {
-                alert("Erro: "+res.error);
-            }
-        } else {
-            alert("Preencha os campos");
-        }
-    }*/
-
-      const handleMessageButtonClick = () => {
+    const handleMessageButtonClick = () => {
         navigation.reset({
             routes: [{name: 'SignIn'}]
         });
+    }
+
+    const handleMessageButtonClickLoginSucess = () => {
+        navigation.reset({
+            routes: [{name: 'Home'}]
+        });
+    }
+
+
+    const handleSingClick = async () => {
+        if(emailField != '' && nameField != '' && passwordField != '' && cpfField != '' && numberField != '' ) {
+
+            try {
+
+                const dataProfile = {
+                    email: emailField,
+                    password: passwordField,
+                    birthDate : "2021-10-27T23:31:10.352+00:00",
+                    cpf: cpfField,
+                    name: nameField,
+                    numberCellphone: numberField
+                }
+
+                console.log("TESTE")
+                const response = await api.post("/api/v1/user", dataProfile) 
+
+                console.log(response.data)
+
+                if(response.data != null) {        
+                    handleMessageButtonClickLoginSucess()
+                }
+                   
+            } catch (err) {
+                alert('Erro no Login, Tente novamente!' + err);
+            }
+
+        } else {
+            alert("Preencha os campos");
+        }
     }
 
 
@@ -66,9 +80,9 @@ export default () => {
             <InputArea>
                 
                 <SignInput 
-                    placeholder="Digite seu nome"
-                    value={nameField}
-                    onChangeText={t=>setNameField(t)}
+                        placeholder="Digite seu nome"
+                        value={nameField}
+                        onChangeText={t=>setNameField(t)}
                 />
 
                 <SignInput 
@@ -83,8 +97,26 @@ export default () => {
                     password={true}
                 />
 
-                <CustomButton /*onPress={handleMessageButtonClick}*/>
-                    <CustomButtonText>Cadastar</CustomButtonText>
+                <SignInput  
+                        placeholder="Digite seu cpf"
+                        value={cpfField}
+                        onChangeText={t=>setCpfField(t)}
+                />
+                
+                <SignInput 
+                        placeholder="Numero de Celular "
+                        value={numberField}
+                        onChangeText={t=>setNumberField(t)}
+                />
+                
+                
+                {/* <DateInput 
+                    value={birthDateField}
+                /> */}
+                
+
+                <CustomButton onPress={handleSingClick}>
+                    <CustomButtonText>Login</CustomButtonText>
                 </CustomButton>
 
                 <SignMessageButton onPress={handleMessageButtonClick}>
