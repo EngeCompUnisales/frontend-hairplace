@@ -1,5 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {KeyboardAvoidingView} from 'react-native'
+
+<KeyboardAvoidingView>
+    style={styled.Container}
+    behavior={
+        Platform.OS === 'ios'
+        ? 'padding'
+        :null
+    }
+</KeyboardAvoidingView>
 
 export const Container = styled.SafeAreaView`
     background-color: #D4D2D5;
