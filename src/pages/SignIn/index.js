@@ -1,7 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-//import AsyncStorage from '@react-native-community/async-storage';
-
 import { UserContext } from '../../contexts/UserContext';
 
 import {
@@ -14,7 +12,7 @@ import {
     SignMessageButtonTextBold
 } from './styles';
 
-import Api from '../../Api';
+import api from '../../Api';
 
 import SignInput from '../../components/SignInput';
 
@@ -34,29 +32,27 @@ export default () => {
 
     const handleSingClick = async () => {
         if(emailField != '' && passwordField != '') {
-            
-            let json = await Api.signIn(emailField, passwordField);
-            
-/*            if(json.token) {
-                await AsyncStorage.setItem('token', json.token);
 
-                userDispatch({
-                    type: 'setAvatar',
-                    payload:{
-                        avatar: json.data.avatar
-                    }
-                });
+            try {
+                console.log("TESTE")
+                const response = await api.get("/api/v1/auth/login", {
+                            params : {
+                            email: emailField,
+                            password: passwordField
+                        }
+                    })
+                console.log(response.data)
 
-                navigation.reset({
-                    routes:[{name:'MainTab'}]
-                });
-            }*/
-            if(json != null ?? json != '') {
-                console.log(json)
-                handleMessageButtonClickLoginSucess();
-            } else {
-                alert('E-mail ou senha errados');
+                if(response.data != null) {        
+                    handleMessageButtonClickLoginSucess();
+                }else{
+                    alert('E-mail ou senha errados');
+                }
+                   
+            } catch (err) {
+                alert('Erro no Login, Tente novamente!' + err);
             }
+
         } else {
             alert("Preencha os campos");
         }
