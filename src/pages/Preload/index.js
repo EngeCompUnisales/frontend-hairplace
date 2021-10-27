@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Container, LoadingIcon } from './styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
 import BarberLogo from "../../assets/barberlogo.svg";
@@ -11,13 +10,7 @@ export default () => {
 
     useEffect(()=>{
         const checkToken = async () => {
-            const token = await AsyncStorage.getItem('token');
-            if(token !== null){
-                //validar
-
-            } else {
-                navigation.navigate('SignIn');
-            }
+            navigation.navigate('SignIn');
         }
         checkToken();
     }, []);

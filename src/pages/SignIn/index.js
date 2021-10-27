@@ -1,7 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-//import AsyncStorage from '@react-native-community/async-storage';
-
 import { UserContext } from '../../contexts/UserContext';
 
 import {
@@ -14,7 +12,7 @@ import {
     SignMessageButtonTextBold
 } from './styles';
 
-import Api from '../../Api';
+import api from '../../Api';
 
 import SignInput from '../../components/SignInput';
 
@@ -31,15 +29,28 @@ export default () => {
     
 
     const handleSingClick = async () => {
-        if(emailField != '') {
-            
-            let json = await Api.signIn(emailField);
-            if(json != null ?? json != '') {
-                console.log(json)
-                handleMessageButtonClickLoginSucess();
-            } else {
-                alert('E-mail ou senha errados');
+        if(emailField != '' && passwordField != '') {
+
+            try {
+                console.log("TESTE")
+                const response = await api.get("/api/v1/auth/login", {
+                            params : {
+                            email: emailField,
+                            password: passwordField
+                        }
+                    })
+                console.log(response.data)
+
+                if(response.data != null) {        
+                    handleMessageButtonClickLoginSucess();
+                }else{
+                    alert('E-mail ou senha errados');
+                }
+                   
+            } catch (err) {
+                alert('Erro no Login, Tente novamente!' + err);
             }
+
         } else {
             alert("Preencha os campos");
         }
