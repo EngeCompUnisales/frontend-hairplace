@@ -27,10 +27,32 @@ export default () => {
 
     
 
-/*    const handleMessageButtonClick = () => {
-        
-      }
-*/
+/*    const handleSignClick = async () => {
+        if(nameField != '' && emailField != '' && passwordField != '') {
+            let res = await Api.signUp(nameField, emailField, passwordField);
+            
+            if(res.token) {
+                await AsyncStorage.setItem('token', res.token);
+
+                userDispatch({
+                    type: 'setAvatar',
+                    payload:{
+                        avatar: res.data.avatar
+                    }
+                });
+
+                navigation.reset({
+                    routes:[{name:'MainTab'}]
+                });
+
+            } else {
+                alert("Erro: "+res.error);
+            }
+        } else {
+            alert("Preencha os campos");
+        }
+    }*/
+
       const handleMessageButtonClick = () => {
         navigation.reset({
             routes: [{name: 'SignIn'}]
@@ -44,9 +66,9 @@ export default () => {
             <InputArea>
                 
                 <SignInput 
-                        placeholder="Digite seu nome"
-                        value={nameField}
-                        onChangeText={t=>setNameField(t)}
+                    placeholder="Digite seu nome"
+                    value={nameField}
+                    onChangeText={t=>setNameField(t)}
                 />
 
                 <SignInput 
@@ -62,7 +84,7 @@ export default () => {
                 />
 
                 <CustomButton /*onPress={handleMessageButtonClick}*/>
-                    <CustomButtonText>Login</CustomButtonText>
+                    <CustomButtonText>Cadastar</CustomButtonText>
                 </CustomButton>
 
                 <SignMessageButton onPress={handleMessageButtonClick}>

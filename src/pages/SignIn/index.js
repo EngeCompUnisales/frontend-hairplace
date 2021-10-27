@@ -23,7 +23,9 @@ import BarberLogo from "../../assets/barberlogo.svg";
 
 export default () => {
 
-    const navigation = useNavigation();
+    const { dispatch: userDispatch} = useNavigation(UserContext);
+
+    const navigation = useNavigation('');
 
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
@@ -31,9 +33,24 @@ export default () => {
     
 
     const handleSingClick = async () => {
-        if(emailField != '') {
+        if(emailField != '' && passwordField != '') {
             
-            let json = await Api.signIn(emailField);
+            let json = await Api.signIn(emailField, passwordField);
+            
+/*            if(json.token) {
+                await AsyncStorage.setItem('token', json.token);
+
+                userDispatch({
+                    type: 'setAvatar',
+                    payload:{
+                        avatar: json.data.avatar
+                    }
+                });
+
+                navigation.reset({
+                    routes:[{name:'MainTab'}]
+                });
+            }*/
             if(json != null ?? json != '') {
                 console.log(json)
                 handleMessageButtonClickLoginSucess();
@@ -53,10 +70,9 @@ export default () => {
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'Home'}]
+            routes: [{name: 'MainTab'}]
         });
     }
-
 
     return (
         <Container>
