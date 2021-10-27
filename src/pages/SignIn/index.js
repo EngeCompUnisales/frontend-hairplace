@@ -53,7 +53,7 @@ export default () => {
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'SignUp'}]
+            routes: [{name: 'Home'}]
         });
     }
 
