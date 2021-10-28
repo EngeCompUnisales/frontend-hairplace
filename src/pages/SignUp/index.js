@@ -73,16 +73,15 @@ export default () => {
         }
     }
 
-
     return (
         <Container>
 
             <InputArea>
                 
                 <SignInput 
-                        placeholder="Digite seu nome"
-                        value={nameField}
-                        onChangeText={t=>setNameField(t)}
+                    placeholder="Digite seu nome"
+                    value={nameField}
+                    onChangeText={t=>setNameField(t)}
                 />
 
                 <SignInput 
@@ -98,15 +97,15 @@ export default () => {
                 />
 
                 <SignInput  
-                        placeholder="Digite seu cpf"
-                        value={cpfField}
-                        onChangeText={t=>setCpfField(t)}
+                    placeholder="Digite seu cpf"
+                    value={cpfField}
+                   onChangeText={t=>setCpfField(t)}
                 />
                 
                 <SignInput 
-                        placeholder="Numero de Celular "
-                        value={numberField}
-                        onChangeText={t=>setNumberField(t)}
+                    placeholder="Numero de Celular "
+                    value={numberField}
+                    onChangeText={t=>setNumberField(t)}
                 />
                 
                 
@@ -116,7 +115,7 @@ export default () => {
                 
 
                 <CustomButton onPress={handleSingClick}>
-                    <CustomButtonText>Login</CustomButtonText>
+                    <CustomButtonText>Cadastrar</CustomButtonText>
                 </CustomButton>
 
                 <SignMessageButton onPress={handleMessageButtonClick}>

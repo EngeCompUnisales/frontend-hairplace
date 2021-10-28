@@ -7,8 +7,7 @@ import {
     CustomButton,
     CustomButtonText,
     HeaderArea,
-    HeaderTitle,
-    SignMessageButton,
+    HeaderTitle
 } from './styles';
 
 import SignInput from '../../components/SignInput';
@@ -21,10 +20,41 @@ export default () => {
     const [addressField, setaddressField] = useState('');
     const [cnpjField, setcnpjField] = useState('');
 
-/*    const handleSignClick = () => {
-        
-      }
-*/
+
+    const handleMessageButtonClickLoginSucess = () => {
+        navigation.reset({
+            routes: [{name: 'MainTab'}]
+        });
+    }
+
+/*    const handleSingClick = async () => {
+        if(nameField != '' && cnpjField != '' && addressField != '' ) {
+
+            try {
+
+                const dataProfile = {
+                    name: nameField,
+                    cnpj: cnpjField,
+                    address : addressField
+                }
+
+                console.log("TESTE")
+                const response = await api.post("/api/v1/user", dataProfile) 
+
+                console.log(response.data)
+
+                if(response.data != null) {        
+                    handleMessageButtonClickLoginSucess()
+                }
+                   
+            } catch (err) {
+                alert('Erro no Login, Tente novamente!' + err);
+            }
+
+        } else {
+            alert("Preencha os campos");
+        }
+    }*/
 
     return (
         <Container>
