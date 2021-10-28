@@ -13,8 +13,9 @@ import BarberLogo from '../assets/barberlogo.svg';
 
 const TabArea = styled.View`
     height: 60px;
-    background-color: #4EADBE;
+    background-color: #BAB8BA;
     flex-direction: row;
+    
 `;
 const TabItem = styled.TouchableOpacity`
     flex: 1;

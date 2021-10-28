@@ -1,11 +1,15 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Container } from './styles.js';
+import { 
+    Container,
+    HeaderArea,
+    HeaderTitle
+} from './styles.js';
 
 export default () => {
     return (
         <Container>
-            <Text>Appointments</Text>
+            <Text>ola</Text>
         </Container>
     );
 }

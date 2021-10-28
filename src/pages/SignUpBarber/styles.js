@@ -50,3 +50,14 @@ export const SignMessageButtonTextBold = styled.Text`
     font-weight: bold;
     margin-left: 5px;
 `;
+export const HeaderArea = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+export const HeaderTitle = styled.Text`
+    width: 250px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+`;
