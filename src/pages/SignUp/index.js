@@ -36,7 +36,7 @@ export default () => {
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'Home'}]
+            routes: [{name: 'MainTab'}]
         });
     }
 
