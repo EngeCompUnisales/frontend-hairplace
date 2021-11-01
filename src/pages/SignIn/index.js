@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../contexts/UserContext';
 
@@ -16,7 +17,7 @@ import api from '../../Api';
 
 import SignInput from '../../components/SignInput';
 
-import BarberLogo from "../../assets/barberlogo.svg";
+import Logo from "../../assets/logo.png";
 
 
 export default () => {
@@ -74,7 +75,7 @@ export default () => {
         <Container>
 
             <InputArea>
-            <BarberLogo alt='BarberLogo' width="100%" height="160" />
+            <Image source={require("../../assets/logo.png")} style = {{ width: "100%", height: 160 }}/>
                 <SignInput 
                     placeholder="Digite seu email"
                     value={emailField}

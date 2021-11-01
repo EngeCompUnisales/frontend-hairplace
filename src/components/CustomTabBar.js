@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/native';
-
+import { Image } from "react-native";
 import { UserContext } from '../contexts/UserContext';
 
 import HomeIcon from '../assets/home.svg';
@@ -8,8 +8,6 @@ import SearchIcon from '../assets/search.svg';
 import TodayIcon from '../assets/today.svg';
 import FavoriteIcon from '../assets/favorite.svg';
 import AccountIcon from '../assets/account.svg';
-import BarberLogo from '../assets/barberlogo.svg';
-
 
 const TabArea = styled.View`
     height: 60px;
@@ -69,7 +67,7 @@ export default ({ state, navigation }) => {
                 }*/}
             </TabItem>
             <TabItem onPress={()=>goTo('SignUpBarber')}>
-                <BarberLogo style={{opacity: state.index===5? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+                <Image source={require("../assets/logo.png")} style={{opacity: state.index===5? 1 : 0.5}} fill="#FFFFFF" />
             </TabItem>
         </TabArea>
     );

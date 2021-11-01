@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
+import { Image } from "react-native";
 import { Container, LoadingIcon } from './styles';
 import { useNavigation } from '@react-navigation/native';
-
-import BarberLogo from "../../assets/barberlogo.svg";
 
 export default () => {
 
@@ -17,7 +16,7 @@ export default () => {
 
     return (
         <Container>
-            <BarberLogo alt='BarberLogo' width="100%" height="160" />
+            <Image source={require("../../assets/logo.png")}style = {{ width: "100%", height: 160 }}/>
             <LoadingIcon size="large" color="#000000" />
         </Container>
     );
