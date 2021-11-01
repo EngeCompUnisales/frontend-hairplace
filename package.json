@@ -8,6 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "nth-check": ">=2.0.1",
+    "node-fetch": ">=2.6.1",
+    "set-value": ">=4.0.1",
     "@expo/ngrok": "^4.1.0",
     "@react-native-community/geolocation": "^2.0.2",
     "@react-navigation/bottom-tabs": "^6.0.9",
