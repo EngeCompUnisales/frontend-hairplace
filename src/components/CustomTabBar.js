@@ -67,7 +67,7 @@ export default ({ state, navigation }) => {
                 }*/}
             </TabItem>
             <TabItem onPress={()=>goTo('SignUpBarber')}>
-                <Image source={require("../assets/logo.png")} style={{opacity: state.index===5? 1 : 0.5}} fill="#FFFFFF" />
+                <Image source={require("../assets/logo.png")} style={{opacity: state.index===5? 1 : 0.5 , width:24 , height:24}} fill="#FFFFFF" />
             </TabItem>
         </TabArea>
     );
