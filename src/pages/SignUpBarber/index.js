@@ -11,6 +11,7 @@ import {
 } from './styles';
 
 import SignInput from '../../components/SignInput';
+import api from '../../Api';
 
 export default () => {
 
@@ -18,6 +19,7 @@ export default () => {
 
     const [nameField, setNameField] = useState('');
     const [addressField, setaddressField] = useState('');
+    const [celphoneField, setcelphoneField] = useState('');
     const [cnpjField, setcnpjField] = useState('');
 
 
@@ -27,34 +29,42 @@ export default () => {
         });
     }
 
-/*    const handleSingClick = async () => {
-        if(nameField != '' && cnpjField != '' && addressField != '' ) {
+    const handleBusinessClick = async () => {
+        if(nameField != '' && cnpjField != '' && addressField != '' && celphoneField != '' ) {
 
             try {
 
-                const dataProfile = {
-                    name: nameField,
-                    cnpj: cnpjField,
-                    address : addressField
+                const responsible = {
+                   id : 81
                 }
 
-                console.log("TESTE")
-                const response = await api.post("/api/v1/user", dataProfile) 
+                const dataBusiness = {
+                    address : addressField,
+                    cnpj: cnpjField,
+                    name: nameField,
+                    numberCellphone: celphoneField,
+                    responsible : responsible
+                }
+
+                console.log(dataBusiness)
+                const response = await api.post("/api/v1/estabelecimento", dataBusiness) 
 
                 console.log(response.data)
 
                 if(response.data != null) {        
                     handleMessageButtonClickLoginSucess()
+                } else {
+                    alert('Erro no cadastro do estabelecimento!' + err);
                 }
                    
             } catch (err) {
-                alert('Erro no Login, Tente novamente!' + err);
+                alert('Erro no cadastro do estabelecimento, Tente novamente!' + err);
             }
 
         } else {
             alert("Preencha os campos");
         }
-    }*/
+    }
 
     return (
         <Container>
@@ -77,12 +87,18 @@ export default () => {
                 />
 
                 <SignInput 
+                        placeholder="Digite o telefone"
+                        value={celphoneField}
+                        onChangeText={t=>setcelphoneField(t)}
+                />
+
+                <SignInput 
                         placeholder="Digite seu endereço"
                         value={addressField}
                         onChangeText={t=>setaddressField(t)}
                 />
 
-                <CustomButton /*onPress={handleSignClick}*/>
+                <CustomButton onPress={handleBusinessClick}>
                     <CustomButtonText>Cadastrar</CustomButtonText>
                 </CustomButton>
             
