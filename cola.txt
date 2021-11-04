@@ -11,6 +11,7 @@ npm start
 npm install
 expo start
 
+api: https://api-hairplace.herokuapp.com/swagger-ui.html#/Endpoints%20de%20Estabelecimento/saveEstabelecimentoUsingPOST
 
 tempo:
 
