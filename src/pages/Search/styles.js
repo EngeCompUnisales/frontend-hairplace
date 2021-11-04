@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
@@ -46,10 +45,31 @@ export const LocationFinder = styled.TouchableOpacity`
     width: 24px;
     height: 24px;
 `;
+export const SearchArea = styled.View`
+  background-color: #4EADBE;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 20px;
+  margin: 20px;
+  margin-bottom: 0px;
+`;
+
+export const SearchInput = styled.TextInput`
+  flex: 1;
+  font-size: 16px;
+  color: #ffffff;
+`;
+
 export const LoadingIcon = styled.ActivityIndicator`
-    margin-top: 50px;
+  margin-top: 30px;
 `;
 export const ListArea = styled.View`
-    margin-top: 30px;
-    margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+export const EmptyWarning = styled.Text`
+    text-align:center;
+    margin-top:30px;
+    color:#FFFFFF;
+    font-size:25px;
 `;
