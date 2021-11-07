@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+
 import CustomTabBar from '../components/CustomTabBar';
 
 import Home from '../pages/Home';
@@ -10,7 +11,9 @@ import Favorites from '../pages/Favorites';
 import Profile from '../pages/Profile';
 import SignUpBarber from '../pages/SignUpBarber';
 
+
 const Tab = createBottomTabNavigator();
+
 
 export default () => (
     <Tab.Navigator tabBar={props=><CustomTabBar {...props} />}>
@@ -22,3 +25,4 @@ export default () => (
         <Tab.Screen name="SignUpBarber" component={SignUpBarber} />
     </Tab.Navigator>
 );
+
