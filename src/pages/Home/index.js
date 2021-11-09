@@ -14,7 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import SearchIcon from '../../assets/search.svg';
 import Api from '../../Api';
-import BarberItem from '../../components/BarberItem.js'
+import BarberItem from '../../components/BarberItem.js';
 
 export default () => {
   const navigation = useNavigation();
@@ -22,7 +22,7 @@ export default () => {
   const [coords, setCoords] = useState(null);
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [refreshing, setRefreshing] = useState(false)
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(()=>{
     getBarbers()

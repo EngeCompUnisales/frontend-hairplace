@@ -25,7 +25,7 @@ export default () => {
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'MainTab'}]
+            routes: [{name: 'MainTabBarber'}]
         });
     }
 
