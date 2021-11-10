@@ -11,18 +11,17 @@ export const InputArea = styled.View`
     padding: 40px;
 `;
 
-export const CreateButton = styled.TouchableOpacity`
+export const CustomButton = styled.TouchableOpacity`
     height: 60px;
     background-color: #000000;
     border-radius: 30px;
     justify-content: center;
     align-items: center;
 `;
-export const CreateButtonText = styled.Text`
+export const CustomButtonText = styled.Text`
     font-size: 18px;
     color: #FFF;
 `;
-
 export const SignMessageButton = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: center;

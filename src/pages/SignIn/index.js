@@ -42,10 +42,23 @@ export default () => {
                             password: passwordField
                         }
                     })
+                
                 console.log(response.data)
 
-                if(response.data != null) {        
-                    handleMessageButtonClickLoginSucess();
+                if(response.data != null) {
+                    /*const estabelecimento = { responsible :{ id: response.data.id}};
+
+                    const responseE = await api.get("/api/v1/auth/estabelecimento", {
+                        params : estabelecimento
+                    });
+                    
+                    if(responseE != null){
+                        // vai para tela do estabelecimento
+                    }else{
+                        handleMessageButtonClickLoginSucess();
+                    }*/
+                    handleMessageButtonClickLoginSucess();//remover esta linha posteriormente
+
                 }else{
                     alert('E-mail ou senha errados');
                 }
