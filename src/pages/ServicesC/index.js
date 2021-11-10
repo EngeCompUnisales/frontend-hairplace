@@ -40,28 +40,28 @@ export default () => {
 
             try {
 
-                const place = {
-                   id : 81
+                const business = {
+                   id : 91
                 }
 
                 const dataService = {
-                    name: nameField,
-                    preco: precoField,
-                    responsible : place
-                }
+                    businessService : business,
+                    nome: nameField,
+                    preco: precoField
+                }   
                 console.log(dataService)
-                
-                //const response = await api.post("/api/v1/servico", dataService) 
-                //console.log(response.data)
+                const response = await api.post("/api/v1/servico", dataService) 
 
+                console.log(response.data)
+                
                 if(response.data != null) {        
                     handleMessageButtonClickCreateSucess()
                 } else {
-                    alert('Erro no cadastro do estabelecimento!' + err);
+                    alert('Erro no cadastro do serviço!' + err);
                 }
                    
             } catch (err) {
-                alert('Erro no cadastro do estabelecimento, Tente novamente!' + err);
+                alert('Erro no cadastro do serviço, Tente novamente!' + err);
             }
 
         } else {
@@ -89,7 +89,7 @@ export default () => {
                         onChangeText={t=>setPrecoField(t)}
                 />
 
-                <CustomButton /*onPress={handleCreateClick}*/>
+                <CustomButton onPress={handleCreateClick}>
                     <CustomButtonText>Cadastrar serviço</CustomButtonText>
                 </CustomButton>
 
