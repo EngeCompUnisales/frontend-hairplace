@@ -38,6 +38,19 @@ export const LocationArea = styled.View`
     padding-right: 20px;
     margin-top: 30px;
 `;
+export const ButtonAgendamento = styled.TouchableOpacity`
+  width: 80%;
+  height: 8%;
+  background-color: #268596;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+`;
+export const ButtonAgendamentoText = styled.Text`
+    font-size: 18px;
+    color: #FFF;
+`;
+
 export const LocationInput = styled.TextInput`
     flex: 1;
     font-size: 16px;
@@ -54,3 +67,23 @@ export const ListArea = styled.View`
     margin-top: 30px;
     margin-bottom: 30px;
 `;
+
+export default ({data}) => {
+    const navigation = useNavigation();
+    const handleClick = () => {
+        console.log('CLICOU NA LISTA 66')
+        navigation.navigate('Barber', {
+            id:data.id,
+
+        })
+    }
+
+  return (
+    <Area onPress={handleClick}>
+      <Avatar source={{uri: data.avatar}} />
+      <InfoArea>
+        <UserName>{data.name}</UserName>
+      </InfoArea>
+    </Area>
+  );
+};

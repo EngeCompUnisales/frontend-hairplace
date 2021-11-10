@@ -12,15 +12,18 @@ import {
 
 import SignInput from '../../components/SignInput';
 
-export default () => {
+export default (parametros) => {
 
   const navigation = useNavigation()
+
+  console.log(parametros.route.params.id)
 
   const CreateMessageButton = () => {
     navigation.reset({
         routes: [{name: 'ServicesC'}]
     });
   }
+
 
   return (
     <Container>
