@@ -32,7 +32,7 @@ export default () => {
     setLoading(true)
     setList([])
 
-    let res = await Api.get("/api/v1/estabelecimento");
+    let res = await Api.get("/api/v1/estabelecimento/");
       if(res != null){
           setList(res.data)
       } else {

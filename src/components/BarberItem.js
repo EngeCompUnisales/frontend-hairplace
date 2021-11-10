@@ -38,6 +38,7 @@ const SeeProfileButtonText = styled.Text`
 export default ({data}) => {
     const navigation = useNavigation();
     const handleClick = () => {
+        console.log('CLICOU NA LISTA 66')
         navigation.navigate('Barber', {
             id:data.id,
             avatar: data.avatar,
