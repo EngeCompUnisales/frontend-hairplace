@@ -37,33 +37,26 @@ export default () => {
 
     const handleCreateClick = async () => {
         if(nameField != '' && precoField != '' ) {
-
             try {
-
-                const business = {
-                   id : 91
+                const place = {
+                   id : 81
                 }
-
                 const dataService = {
-                    businessService : business,
-                    nome: nameField,
-                    preco: precoField
-                }   
+                    name: nameField,
+                    preco: precoField,
+                    responsible : place
+                }
                 console.log(dataService)
                 const response = await api.post("/api/v1/servico", dataService) 
-
                 console.log(response.data)
-                
                 if(response.data != null) {        
                     handleMessageButtonClickCreateSucess()
                 } else {
-                    alert('Erro no cadastro do serviço!' + err);
+                    alert('Erro no cadastro do estabelecimento!' + err);
                 }
-                   
             } catch (err) {
-                alert('Erro no cadastro do serviço, Tente novamente!' + err);
+                alert('Erro no cadastro do estabelecimento, Tente novamente!' + err);
             }
-
         } else {
             alert("Preencha os campos");
         }
