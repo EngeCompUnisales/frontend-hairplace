@@ -12,6 +12,12 @@ export default (parametros) => {
     const [precoField, setPrecoField] = useState('');
     const id = parametros.route.params.id
 
+    const handleMessageButtonClickCreateSucess = () => {
+        navigation.reset({
+            routes: [{name: 'MainTabBarber'}]
+        });
+    }
+
     const getService = async (id) => {
         let res = await api.get("/api/v1/servicos/" + id);
         if(res.data != null){
@@ -36,7 +42,7 @@ export default (parametros) => {
                     preco: precoField
                 }
                 console.log(dataService)
-                const response = await api.put("/api/v1/servico", dataService) 
+                const response = await api.put("/api/v1/servico/" + id, dataService) 
                 console.log(response.data)
                 if(response.data != null) {        
                     handleMessageButtonClickCreateSucess()
