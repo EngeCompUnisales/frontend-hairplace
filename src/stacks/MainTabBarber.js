@@ -7,6 +7,8 @@ import AppointmentsBarber from '../pages/AppointmentsBarber';
 import ProfileBarber from '../pages/ProfileBarber';
 import Services from '../pages/Services';
 import ServicesC from '../pages/ServicesC';
+import Service from '../pages/Service';
+import ServicesList from '../pages/ServicesList';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,5 +18,8 @@ export default () => (
         <Tab.Screen name="ProfileBarber" component={ProfileBarber} />
         <Tab.Screen name="Services" component={Services} />
         <Tab.Screen name="ServicesC" component={ServicesC} />
+        <Tab.Screen name="Service" component={Service} />
+        <Tab.Screen name="ServicesList" component={ServicesList} />
+
     </Tab.Navigator>
 );
