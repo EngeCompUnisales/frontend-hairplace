@@ -2,11 +2,17 @@ import React, {useState, useEffect} from 'react';
 import { Text } from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Api from '../../Api';
-import {data} from '../../components/BarberItem.js';
 
 import { ButtonAgendamento, 
     Container,
-    ButtonAgendamentoText
+    Scroller,
+    ButtonAgendamentoText,
+    HeaderArea,
+    HeaderTitle,
+    PageBody,
+    UserInfoArea,
+    UserInfoAreaText,
+    UserContactArea
 } from './styles.js';
 
 export default (parametros) => {
@@ -42,10 +48,31 @@ export default (parametros) => {
     
     return (
         <Container>
-            <Text style = {{ top: "50%" }}>Barbeiro: {parametros.route.params.id}</Text>
-            <ButtonAgendamento onPress={handleAgendamentoClick}>
-                    <ButtonAgendamentoText>Fazer Agendamento</ButtonAgendamentoText>
-                </ButtonAgendamento>
+            <Scroller>
+
+                <HeaderArea>
+                    <HeaderTitle >
+                        <Text >{parametros.route.params.name}</Text>
+                    </HeaderTitle>
+
+                </HeaderArea>
+       
+                <PageBody>
+                <   ButtonAgendamento onPress={handleAgendamentoClick}>
+                        <ButtonAgendamentoText>Fazer Agendamento</ButtonAgendamentoText>
+                    </ButtonAgendamento>
+                    <UserInfoArea>
+                            <UserInfoAreaText>
+                            <Text >Descrição</Text>
+                            </UserInfoAreaText>
+                    </UserInfoArea>
+                    
+                    <UserContactArea>
+                        
+                    </UserContactArea>
+                </PageBody>
+
+            </Scroller>
         </Container>
     );
 }

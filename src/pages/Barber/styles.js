@@ -1,47 +1,37 @@
-import React from 'react';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
     background-color: #D4D2D5;
-    align-items: center;
+    justify-content: center;
+    
 `;
 
 export const Scroller = styled.ScrollView`
     flex: 1;
     padding: 20px;
+    background-color: #D4D2D5;
 `;
 
 export const HeaderArea = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: #D4D2D5;
+    margin:20px auto;
 `;
 export const HeaderTitle = styled.Text`
-    width: 250px;
+    width: 850px;
     font-size: 24px;
     font-weight: bold;
-    color: #FFF;
-`;
-export const SearchButton = styled.TouchableOpacity`
-    width: 26px;
-    height: 26px;
-`;
-
-export const LocationArea = styled.View`
-    background-color: #4EADBE;
-    height: 60px;
-    border-radius: 30px;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 30px;
+    color: #000000;
 `;
 export const ButtonAgendamento = styled.TouchableOpacity`
   width: 80%;
-  height: 8%;
-  background-color: #268596;
+  height: 40px;
+  background-color: #000000;
+  
+  margin:50px auto;
   border-radius: 30px;
   justify-content: center;
   align-items: center;
@@ -50,40 +40,27 @@ export const ButtonAgendamentoText = styled.Text`
     font-size: 18px;
     color: #FFF;
 `;
+export const PageBody = styled.View`
 
-export const LocationInput = styled.TextInput`
-    flex: 1;
-    font-size: 16px;
-    color: #FFFFFF;
-`;
-export const LocationFinder = styled.TouchableOpacity`
-    width: 24px;
-    height: 24px;
-`;
-export const LoadingIcon = styled.ActivityIndicator`
-    margin-top: 50px;
-`;
-export const ListArea = styled.View`
-    margin-top: 30px;
-    margin-bottom: 30px;
+
 `;
 
-export default ({data}) => {
-    const navigation = useNavigation();
-    const handleClick = () => {
-        console.log('CLICOU NA LISTA 66')
-        navigation.navigate('Barber', {
-            id:data.id,
+export const UserContactArea = styled.View`
+`;
 
-        })
-    }
+export const UserInfoArea = styled.View`
+width: 300px;
+height: 40px;
+background-color: #000000;
 
-  return (
-    <Area onPress={handleClick}>
-      <Avatar source={{uri: data.avatar}} />
-      <InfoArea>
-        <UserName>{data.name}</UserName>
-      </InfoArea>
-    </Area>
-  );
-};
+margin:50px auto;
+border-radius: 30px;
+justify-content: center;
+align-items: center;
+
+`;
+export const UserInfoAreaText = styled.Text`
+font-size: 18px;
+color: #FFF;
+`;
+
