@@ -52,3 +52,18 @@ export const ListArea = styled.View`
     margin-top: 30px;
     margin-bottom: 30px;
 `;
+export const CreateButton = styled.TouchableOpacity`
+    height: 60px;
+    background-color: #000000;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+`;
+export const CreateButtonText = styled.Text`
+    font-size: 18px;
+    color: #FFF;
+`;
+export const InputArea = styled.View`
+    width: 100%;
+    padding: 40px;
+`;

@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Platform, RefreshControl} from 'react-native';
+import {RefreshControl} from 'react-native';
 import {
   Container,
   Scroller,
+  InputArea,
   LoadingIcon,
+  CreateButton,
+  CreateButtonText,
   ListArea
 } from './styles.js';
 
@@ -13,11 +16,16 @@ import ServiceItem from '../../components/ServiceItem.js';
 
 export default () => {
   const navigation = useNavigation();
-
   const [coords, setCoords] = useState(null);
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const CreateMessageButton = () => {
+    navigation.reset({
+        routes: [{name: 'ServicesC'}]
+    });
+  }
 
   useEffect(()=>{
     getServices()
@@ -43,6 +51,12 @@ export default () => {
 
   return (
     <Container>
+      <InputArea> 
+        <CreateButton onPress={CreateMessageButton}>
+            <CreateButtonText>Criar</CreateButtonText>
+        </CreateButton>
+      </InputArea>
+
       <Scroller refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
