@@ -55,7 +55,7 @@ export default ({ state, navigation }) => {
                     <AccountIcon style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
                 }*/}
             </TabItem>
-            <TabItem onPress={()=>goTo('ServicesList')}>
+            <TabItem onPress={()=>goTo('Services')}>
                 <Image source={require("../assets/logo.png")} style={{opacity: state.index===2? 1 : 0.5 , width:24 , height:24}} fill="#FFFFFF" />
             </TabItem>
         </TabArea>

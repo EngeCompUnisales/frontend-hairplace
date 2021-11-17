@@ -14,7 +14,7 @@ export default (parametros) => {
 
     const handleMessageButtonClickCreateSucess = () => {
         navigation.reset({
-            routes: [{name: 'MainTabBarber'}]
+            routes: [{name: 'Services'}]
         });
     }
 
@@ -29,7 +29,7 @@ export default (parametros) => {
     };
     const handleMessageButtonClick = () => { //Botão Voltar
         navigation.reset({
-            routes: [{name: 'ServicesList'}]
+            routes: [{name: 'Services'}]
         });
     }
 
