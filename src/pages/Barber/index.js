@@ -38,7 +38,7 @@ export default (parametros) => {
 
     const handleAgendamentoClick = () => { 
         console.log(parametros.route.params.id)
-        navigation.navigate('Services', {
+        navigation.navigate('Appointments', {
             id: parametros.route.params.id
 
         })

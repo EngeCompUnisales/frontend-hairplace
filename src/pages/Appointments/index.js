@@ -1,51 +1,92 @@
-import React, {useEffect, useState} from 'react';
+import React ,{ useState } from 'react';
 import {
   Container,
   HeaderTitle,
-  Scroller,
-  ListArea
-} from './styles.js';
-import {RefreshControl} from 'react-native'
-import AppointmentsItem from '../../components/AppointmentsItem';
+  HeaderArea,
+  InputArea,
+  CustomButton,
+  CustomButtonText,
+  SignMessageButton,
+  SignMessageButtonTextBold
 
-import Api from '../../Api';
+} from './styles.js';
+import SignInput from '../../components/SignInput';
+
+import api from '../../Api';
 
 export default () => {
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false)
 
-  useEffect(()=>{
-    getAppointments()
-  },[])
+  const [serviceField, setServiceField] = useState('');
+ 
+  const handleMessageButtonClick = () => {
+    navigation.reset({
+        routes: [{name: 'Home'}]
+    });
+  }
 
-  const getAppointments = async () => {
-    setLoading(true);
-    setList([]);
 
-    const response = await Api.get("/api/v1/agendamento")
+  const handleCreateClick = async () => {
+    if(serviceField != '' ) {
+        try {
+            const business = {
+                id : 66
+            }
 
-    console.log(response.data)
+            const client = {
+              id : 28
+            }   
 
-    if(response.data != null) {        
-      setList(response.data)
-    }else{
-      alert("Erro Ao recuperar os Agendamentos ")
+            const service = {
+              id : 144
+            }   
+
+            const dataAgendamento = {
+              businessService : business,
+              client : client,
+              service : service,
+              startService: "2021-11-17T23:53:14.538Z"
+            }   
+            
+            const response = await api.post("api/v1/agendamento", dataAgendamento) 
+
+            if(response.data != null) {        
+                
+            } else {
+                alert('Erro no agendamento do serviço!' + err);
+            }
+        } catch (err) {
+            alert('Erro no agendamento, Tente novamente!' + err);
+        }
+    } else {
+        alert("Preencha os campos");
     }
-    setLoading(false);
-  };
+}
 
   return (
     <Container>
-       
-      <Scroller refreshControl={
-        <RefreshControl refreshing={loading} onRefresh={getAppointments}/>
-      }>
-        <ListArea>
-          {list.map((item, k) => (
-            <AppointmentsItem data={item} key={k} />
-          ))}
-        </ListArea>
-      </Scroller>
+      
+      <HeaderArea>
+              <HeaderTitle numberOfLines={2}>Fazer Agendamento</HeaderTitle>
+      </HeaderArea>
+      
+      <InputArea>
+          
+          <SignInput 
+                  placeholder="Serviço desejado"
+                  value={serviceField}
+                  onChangeText={t=>setServiceField(t)}
+          />
+
+          <CustomButton onPress={handleCreateClick}>
+              <CustomButtonText>Agendar</CustomButtonText>
+          </CustomButton>
+
+          <SignMessageButton onPress={handleMessageButtonClick}>
+              <SignMessageButtonTextBold>Voltar</SignMessageButtonTextBold>
+          </SignMessageButton>
+      
+      </InputArea>
+  
     </Container>
   );
 };
