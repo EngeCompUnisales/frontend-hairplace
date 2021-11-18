@@ -1,10 +1,14 @@
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
-import { Container } from './styles';
-import {RefreshControl} from 'react-native'
+import { 
+Container,
+Scroller,
+ListArea 
+} from './styles';
+import { RefreshControl } from 'react-native'
 import AppointmentsItem from '../../components/AppointmentsItem';
 
+import api from '../../Api';
 
 export default () => {
 
@@ -19,7 +23,7 @@ export default () => {
     setLoading(true);
     setList([]);
 
-    const response = await Api.get("/api/v1/agendamento")
+    const response = await api.get("/api/v1/agendamento")
 
     console.log(response.data)
 
