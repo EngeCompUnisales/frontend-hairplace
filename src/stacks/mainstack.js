@@ -23,6 +23,8 @@ export default () => (
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="MainTabBarber" component={MainTabBarber} />
         <Stack.Screen name="Barber" component={Barber} />
+        <Stack.Screen name="Services" component={Services} />
+        <Stack.Screen name="Appointments" component={Appointments} />
         
     </Stack.Navigator>
 );
