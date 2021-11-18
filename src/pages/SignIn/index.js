@@ -46,19 +46,18 @@ export default () => {
                 console.log(response.data)
 
                 if(response.data != null) {
-                    /*const estabelecimento = { responsible :{ id: response.data.id}};
-
-                    const responseE = await api.get("/api/v1/auth/estabelecimento", {
-                        params : estabelecimento
-                    });
                     
-                    if(responseE != null){
-                        // vai para tela do estabelecimento
+                    const responseEstablishment = await api.get("/api/v1/estabelecimento/responsible/" + response.data.id);
+
+                    console.log("response estabelecimento")
+                    console.log(responseEstablishment.data)
+                    
+                    if(responseEstablishment.data != null){
+                        handleMessageButtonClickLoginBarberSucess();
                     }else{
                         handleMessageButtonClickLoginSucess();
-                    }*/
-                    handleMessageButtonClickLoginSucess();//remover esta linha posteriormente
-
+                    }
+                    //handleMessageButtonClickLoginSucess();//remover dps
                 }else{
                     alert('E-mail ou senha errados');
                 }
@@ -81,6 +80,12 @@ export default () => {
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
             routes: [{name: 'MainTab'}]
+        });
+    }
+
+    const handleMessageButtonClickLoginBarberSucess = () => {
+        navigation.reset({
+            routes: [{name: 'MainTabBarber'}]
         });
     }
 

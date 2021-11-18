@@ -7,13 +7,12 @@ import signup from "../pages/SignUp";
 import MainTab from './MainTab';
 import MainTabBarber from './MainTabBarber';
 import Barber from '../pages/Barber'
-import Services from '../pages/Services';
 
 const Stack = createStackNavigator();
 
 export default () => (
     <Stack.Navigator
-        initialRouteName="MainTabBarber"
+        initialRouteName="Preload"
         screenOptions={{
             headerShown: false
         }}
@@ -24,6 +23,6 @@ export default () => (
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="MainTabBarber" component={MainTabBarber} />
         <Stack.Screen name="Barber" component={Barber} />
-        <Stack.Screen name="Services" component={Services} />
+        
     </Stack.Navigator>
 );
