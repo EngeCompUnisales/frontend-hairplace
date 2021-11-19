@@ -22,15 +22,15 @@ export default () => {
     setLoading(true);
     setList([]);
 
-    if (searchText != '') {
-        let res = await Api.get("/api/v1/estabelecimento/find" + response.data.name););
+  if (searchText != '') {
+    let res = await Api.get("/api/v1/estabelecimento/find" + response.data.name);
 
-        console.log(res.data)
-        if (res.data != null) {
-            setList(res.data);
-        } else {
-            setEmptyList(true);
-        }
+    console.log(res.data)
+      if (res.data != null) {
+        setList(res.data);
+       } else {
+           setEmptyList(true);
+       }
         
     }
     setLoading(false);

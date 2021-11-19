@@ -46,7 +46,7 @@ export default () => {
                 console.log(response.data)
 
                 if(response.data != null) {
-                    /*
+                    
                     const responseEstablishment = await api.get("/api/v1/estabelecimento/responsible/" + response.data.id);
 
                     console.log("response estabelecimento")
@@ -56,8 +56,8 @@ export default () => {
                         handleMessageButtonClickLoginBarberSucess();
                     }else{
                         handleMessageButtonClickLoginSucess();
-                    }*/
-                    handleMessageButtonClickLoginSucess();//remover dps
+                    }
+                    //handleMessageButtonClickLoginSucess();//remover dps
                 }else{
                     alert('E-mail ou senha errados');
                 }
