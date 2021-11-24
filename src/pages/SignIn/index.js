@@ -52,7 +52,7 @@ export default () => {
                     console.log("response estabelecimento")
                     console.log(responseEstablishment.data)
                     
-                    if(responseEstablishment.data != null){
+                    if(responseEstablishment.data.length > 0){
                         handleMessageButtonClickLoginBarberSucess();
                     }else{
                         handleMessageButtonClickLoginSucess();
