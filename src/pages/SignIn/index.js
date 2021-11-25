@@ -17,7 +17,6 @@ import api from '../../Api';
 
 import SignInput from '../../components/SignInput';
 
-import Logo from "../../assets/logo.png";
 
 
 export default () => {
@@ -29,7 +28,12 @@ export default () => {
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
 
-    
+    function sendResponsibleId() {
+        navigation.navigate('MainTabBarber', {
+            screen: 'ProfileBarber',
+            params: { user: 'jane' },
+          });
+    }
 
     const handleSingClick = async () => {
         if(emailField != '' && passwordField != '') {
@@ -53,6 +57,7 @@ export default () => {
                     console.log(responseEstablishment.data)
                     
                     if(responseEstablishment.data.length > 0){
+                        sendResponsibleId();
                         handleMessageButtonClickLoginBarberSucess();
                     }else{
                         handleMessageButtonClickLoginSucess();

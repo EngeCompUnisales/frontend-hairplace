@@ -1,12 +1,18 @@
 import React, {useState, useContext} from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import { UserContext } from '../../contexts/UserContext';
+import {useNavigation, Text} from '@react-navigation/native';
 import api from '../../Api';
 import SignInput from '../../components/SignInput';
-import {Container, InputArea, CustomButton, CustomButtonText, SignMessageButton, SignMessageButtonTextBold,
+import { 
+Container, 
+InputArea, 
+CustomButton, 
+CustomButtonText, 
+ButtonSignOut, 
+ButtonSignOutText,
 } from './styles';
 
-export default () => {
+export default  () => {
+
     const navigation = useNavigation();
 
     const [nameField, setNameField] = useState('');
@@ -14,27 +20,20 @@ export default () => {
     const [enderecoField, setEnderecoField] = useState('');
     const [telefoneField, setTelefoneField] = useState('');
 
-    const { state: user } = useContext(UserContext);
-    console.log(user.name)
-    console.log(user.id)
-    
+    const handleLogoutClick = async () => {
+        navigation.reset({
+            routes: [{name: 'SignIn'}]
+        });
+     }
+
     const handleMessageButtonClickCreateSucess = () => {
         navigation.reset({
             routes: [{name: 'ProfileBarber'}]
         });
     }
 
-    const getEstabelecimento = async (id) => {
-        let res = await api.get("/api/v1/estabelecimento/" + id);
-        if(res.data != null){
-            console.log(res.data)
-        } else {
-            alert("Oops: DEU RUIM")
-        }
-        console.log("FIM: getEstabelecimento")
-    };
 
-    const handleEditClick = async () => { //Editar
+    const handleEditClick = async () => { //Salvar
         if(nameField != '' && cnpjField != '' && enderecoField != '' && telefoneField != '' ) {
             try {
                 const dataService = {
@@ -63,9 +62,9 @@ export default () => {
     return (
         <Container>
             <InputArea>
-                
+ 
                 <SignInput 
-                        placeholder="Nome"
+                        placeholder= {"Nome"}
                         value={nameField}
                         onChangeText={t=>setNameField(t)}
                 />
@@ -91,6 +90,10 @@ export default () => {
                 <CustomButton onPress={handleEditClick}>
                     <CustomButtonText>Salvar</CustomButtonText>
                 </CustomButton>
+
+                <ButtonSignOut onPress={handleLogoutClick}>
+                    <ButtonSignOutText>Sair</ButtonSignOutText>
+                </ButtonSignOut>
             
             </InputArea>
         </Container>
