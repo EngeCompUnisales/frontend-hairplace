@@ -1,5 +1,6 @@
-import React, {useState, useContext} from 'react';
-import {useNavigation, Text} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import { Text } from 'react-native';
 import api from '../../Api';
 import SignInput from '../../components/SignInput';
 import { 
@@ -11,7 +12,8 @@ ButtonSignOut,
 ButtonSignOutText,
 } from './styles';
 
-export default  () => {
+export default ({route}) => {
+    console.log(route.params)
 
     const navigation = useNavigation();
 
@@ -60,7 +62,10 @@ export default  () => {
     }
 
     return (
+        
         <Container>
+            
+            <Text>Bem vindo {route.params?.name}</Text>
             <InputArea>
  
                 <SignInput 

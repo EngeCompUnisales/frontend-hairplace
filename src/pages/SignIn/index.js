@@ -28,12 +28,6 @@ export default () => {
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
 
-    function sendResponsibleId() {
-        navigation.navigate('MainTabBarber', {
-            screen: 'ProfileBarber',
-            params: { user: 'jane' },
-          });
-    }
 
     const handleSingClick = async () => {
         if(emailField != '' && passwordField != '') {
@@ -57,8 +51,21 @@ export default () => {
                     console.log(responseEstablishment.data)
                     
                     if(responseEstablishment.data.length > 0){
+                        
+                        function sendResponsibleId() {
+                            console.log("perfil barbeiro")
+                            console.log(response.data.id)
+                            navigation.navigate('MainTabBarber', {
+                                screen: 'ProfileBarber',
+                                params: { 
+                                    id: response.data.id,
+                                    name: response.data.name },
+                              });
+                            
+                        }
+
                         sendResponsibleId();
-                        handleMessageButtonClickLoginBarberSucess();
+                        //handleMessageButtonClickLoginBarberSucess();
                     }else{
                         handleMessageButtonClickLoginSucess();
                     }
@@ -75,6 +82,7 @@ export default () => {
             alert("Preencha os campos");
         }
     }
+
 
     const handleMessageButtonClick = () => {
         navigation.reset({
