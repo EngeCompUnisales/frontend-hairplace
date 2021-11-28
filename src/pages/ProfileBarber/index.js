@@ -1,26 +1,49 @@
-import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import { Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { RefreshControl } from 'react-native';
+import {
+  Container,
+  Scroller,
+  LoadingIcon,
+  ButtonSignOut, 
+  ButtonSignOutText,
+  ListArea
+} from './styles.js';
+
+import { useNavigation } from '@react-navigation/native';
 import api from '../../Api';
-import SignInput from '../../components/SignInput';
-import { 
-Container, 
-InputArea, 
-CustomButton, 
-CustomButtonText, 
-ButtonSignOut, 
-ButtonSignOutText,
-} from './styles';
+import EstablishmentItem from '../../components/EstablishmentItem.js';
 
 export default ({route}) => {
-    console.log(route.params)
 
     const navigation = useNavigation();
 
-    const [nameField, setNameField] = useState('');
-    const [cnpjField, setCnpjField] = useState('');
-    const [enderecoField, setEnderecoField] = useState('');
-    const [telefoneField, setTelefoneField] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [list, setList] = useState([]);
+    const [refreshing, setRefreshing] = useState(false);
+
+  
+
+    useEffect(()=>{
+        getEstablishment()
+    },[])
+
+    const getEstablishment = async () => {
+        setLoading(true)
+        setList([])
+
+        let res = await api.get("/api/v1/estabelecimento/responsible/" + route.params?.id);
+            if(res != null){
+                setList(res.data)
+        } else {
+            alert("Oops: DEU RUIM")
+        }
+        setLoading(false)
+    };
+
+    const onRefresh = () => {
+        setRefreshing(false)
+        getEstablishment()
+    }
 
     const handleLogoutClick = async () => {
         navigation.reset({
@@ -28,79 +51,27 @@ export default ({route}) => {
         });
      }
 
-    const handleMessageButtonClickCreateSucess = () => {
-        navigation.reset({
-            routes: [{name: 'ProfileBarber'}]
-        });
-    }
-
-
-    const handleEditClick = async () => { //Salvar
-        if(nameField != '' && cnpjField != '' && enderecoField != '' && telefoneField != '' ) {
-            try {
-                const dataService = {
-                    id : id,
-                    nome: nameField,
-                    cnpj: cnpjField,
-                    endereco: enderecoField,
-                    telefone: telefoneField
-                }
-                console.log(dataService)
-                const response = await api.put("/api/v1/estabelecimento/" + id, dataService) 
-                console.log(response.data)
-                if(response.data != null) {        
-                    handleMessageButtonClickCreateSucess()
-                } else {
-                    alert('Erro no cadastro do serviço!' + err);
-                }
-            } catch (err) {
-                alert('Erro no cadastro do serviço, Tente novamente!' + err);
-            }
-        } else {
-            alert("Preencha os campos");
-        }
-    }
-
     return (
-        
         <Container>
-            
-            <Text>Bem vindo {route.params?.name}</Text>
-            <InputArea>
- 
-                <SignInput 
-                        placeholder= {"Nome"}
-                        value={nameField}
-                        onChangeText={t=>setNameField(t)}
-                />
 
-                <SignInput 
-                        placeholder="CNPJ"
-                        value={cnpjField}
-                        onChangeText={t=>setCnpjField(t)}
-                />
+            <Scroller refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }>
+        
+            {loading && <LoadingIcon size="large" color="#FFFFFF" />}
 
-                <SignInput 
-                        placeholder="Endereço"
-                        value={enderecoField}
-                        onChangeText={t=>setEnderecoField(t)}
-                />
+            <ListArea>
+                {list.map((item, key) => (
+                    <EstablishmentItem key={key} data={item} />
+                ))}
+            </ListArea>
 
-                <SignInput 
-                        placeholder="Telefone"
-                        value={telefoneField}
-                        onChangeText={t=>setTelefoneField(t)}
-                />
+            </Scroller>
 
-                <CustomButton onPress={handleEditClick}>
-                    <CustomButtonText>Salvar</CustomButtonText>
-                </CustomButton>
+            <ButtonSignOut onPress={handleLogoutClick}>
+                <ButtonSignOutText>Sair</ButtonSignOutText>
+            </ButtonSignOut>
 
-                <ButtonSignOut onPress={handleLogoutClick}>
-                    <ButtonSignOutText>Sair</ButtonSignOutText>
-                </ButtonSignOut>
-            
-            </InputArea>
         </Container>
-    );
-}
+  );
+};
