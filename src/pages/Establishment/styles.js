@@ -1,8 +1,10 @@
+import React from 'react';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
     background-color: #D4D2D5;
+    align-items: center;
 `;
 
 export const Scroller = styled.ScrollView`
@@ -52,20 +54,28 @@ export const ListArea = styled.View`
     margin-top: 30px;
     margin-bottom: 30px;
 `;
-export const CreateButton = styled.TouchableOpacity`
-    height: 60px;
+
+export const InputArea = styled.View`
+    width: 100%;
+    padding: 40px;
+`;
+
+export const CustomButton = styled.TouchableOpacity`
+    height: 50px;
     background-color: #000000;
     border-radius: 30px;
     justify-content: center;
     align-items: center;
 `;
-export const CreateButtonText = styled.Text`
+export const CustomButtonText = styled.Text`
     font-size: 18px;
     color: #FFF;
 `;
-export const InputArea = styled.View`
-    width: 100%;
-    padding: 40px;
+export const SignMessageButton = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
 `;
 export const ButtonSignOut = styled.TouchableOpacity`
     height: 50px;
@@ -74,9 +84,7 @@ export const ButtonSignOut = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    bottom: 11px;
-    marginLeft: 50px;
-    marginRight: 50px;
+    
 `;
 export const ButtonSignOutText = styled.Text`
     font-size: 18px;
