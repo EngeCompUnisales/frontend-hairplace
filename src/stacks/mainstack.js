@@ -9,11 +9,9 @@ import MainTabBarber from './MainTabBarber';
 import Barber from '../pages/Barber';
 import Services from '../pages/Services';
 import Appointments from '../pages/Appointments';
-<<<<<<< HEAD
 import GetAppointments from '../pages/GetAppointments';
-=======
 import CancelAppointment from '../pages/CancelAppointment';
->>>>>>> adeb3fefc8cba3c8d9cd5fce445ed3f901368a95
+
 
 const Stack = createStackNavigator();
 
@@ -31,12 +29,9 @@ export default () => (
         <Stack.Screen name="MainTabBarber" component={MainTabBarber} />
         <Stack.Screen name="Barber" component={Barber} />
         <Stack.Screen name="Services" component={Services} />
-<<<<<<< HEAD
         <Stack.Screen name="GetAppointments" component={GetAppointments} />
-=======
         <Stack.Screen name="Appointments" component={Appointments} />
         <Stack.Screen name="CancelAppointment" component={CancelAppointment} />
->>>>>>> adeb3fefc8cba3c8d9cd5fce445ed3f901368a95
 
     </Stack.Navigator>
 );
