@@ -9,11 +9,6 @@ const Area = styled.TouchableOpacity`
   padding: 15px;
   flex-direction: row;
 `;
-const Avatar = styled.Image`
-  width: 88px;
-  height: 88px;
-  border-radius: 20px;
-`;
 const InfoArea = styled.View`
   margin-left: 20px;
   justify-content: space-between;
@@ -21,6 +16,15 @@ const InfoArea = styled.View`
 const UserName = styled.Text`
   font-size: 17px;
   font-weight: bold;
+`;
+const Cnpj = styled.Text`
+  font-size: 17px;
+`;
+const Endereco = styled.Text`
+  font-size: 17px;
+`;
+const Telefone = styled.Text`
+  font-size: 17px;
 `;
 const SeeProfileButton = styled.View`
   width: 85px;
@@ -38,23 +42,30 @@ const SeeProfileButtonText = styled.Text`
 export default ({data}) => {
     const navigation = useNavigation();
     const handleClick = () => {
-        navigation.navigate('Barber', {
+        navigation.navigate('Establishment', {
             id:data.id,
-            avatar: data.avatar,
             name:data.name,
-            stars:data.stars
+            cnpj:data.cnpj,
+            address:data.address,
+            numberCellphone:data.numberCellphone
         })
     }
 
   return (
     <Area onPress={handleClick}>
-      <Avatar source={{uri: data.avatar}} />
-      <InfoArea>
-        <UserName>{data.name}</UserName>
-        <SeeProfileButton>
-          <SeeProfileButtonText>Perfil</SeeProfileButtonText>
-        </SeeProfileButton>
-      </InfoArea>
+
+        <InfoArea>
+            <UserName>Nome: {data.name}</UserName>
+            <Endereco>Endereço: {data.address}</Endereco>
+            <Cnpj>CNPJ: {data.cnpj}</Cnpj>
+            <Telefone>Telefone: {data.numberCellphone}</Telefone>
+
+                <SeeProfileButton>
+                    <SeeProfileButtonText>Ver Mais</SeeProfileButtonText>
+                </SeeProfileButton>
+
+        </InfoArea>
+
     </Area>
   );
 };
