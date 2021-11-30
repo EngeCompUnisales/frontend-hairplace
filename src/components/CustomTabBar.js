@@ -40,7 +40,9 @@ export default ({ state, navigation }) => {
     const { state:user } = useContext(UserContext);
 
     const goTo = (screenName) => {
-        navigation.navigate(screenName);
+        navigation.navigate(screenName, {
+           userId : 28
+        })
     }
 
     return (
@@ -51,7 +53,7 @@ export default ({ state, navigation }) => {
             <TabItem onPress={()=>goTo('Search')}>
                 <SearchIcon style={{opacity: state.index===1? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
-            <TabItem onPress={()=>goTo('Appointments')}>
+            <TabItem onPress={()=>goTo('GetAppointments')}>
                 <TodayIcon style={{opacity: state.index===2? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
             {/*<TabItem onPress={()=>goTo('Favorites')}>

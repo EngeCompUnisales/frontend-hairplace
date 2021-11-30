@@ -1,81 +1,52 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
-const Area = styled.View`
-  background-color: #ffffff;
-  padding: 15px;
+const Area = styled.TouchableOpacity`
+  background-color: #FFFFFF;
   margin-bottom: 20px;
   border-radius: 20px;
-`;
-const UserArea = styled.View`
-  flex: 1;
+  padding: 15px;
   flex-direction: row;
-  align-items: center;
 `;
 const Avatar = styled.Image`
-  width: 56px;
-  height: 56px;
+  width: 88px;
+  height: 88px;
   border-radius: 20px;
-  margin-right: 20px;
 `;
-const UserName = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
-  color: #000000;
-`;
-const SplitArea = styled.View`
-  flex-direction: row;
+const InfoArea = styled.View`
+  margin-left: 20px;
   justify-content: space-between;
-  margin-top: 10px;
 `;
-const ServiceText = styled.Text`
-  font-size: 16px;
+const ServiceName = styled.Text`
+  font-size: 17px;
   font-weight: bold;
-  color: #000000;
 `;
-const DateText = styled.Text`
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  padding: 10px 15px;
+const SeeProfileButton = styled.View`
+  width: 85px;
+  height: 26px;
+  border:1px solid #4EADBE;
   border-radius: 10px;
-  background-color: #4eadbe;
+  justify-content: center;
+  align-items: center;
+`;
+const SeeProfileButtonText = styled.Text`
+  font-size: 13px;
+  color: #268596;
 `;
 
 export default ({data}) => {
-  let d = data.datetime.split(' ');
-  //TEMPO
-  let time = d[1].substring(0, 5);
-
-  //DATA
-  let date = new Date(d[0]);
-  let year = date.getFullYear();
-  let month = date.getMonth();
-  let day = date.getDate();
-
-  month = month < 10 ? '0' + month : month;
-  day = day < 10 ? '0' + day : day;
-
-  let dateString = `${day}/${month}/${year}`;
+    const navigation = useNavigation();
+    const handleClick = () => {
+       
+    }
 
   return (
-    <Area>
-      <UserArea>
-        <Avatar source={{uri: data.barber.avatar}} />
-        <UserName>{data.barber.name}</UserName>
-      </UserArea>
-
-      <SplitArea>
-        <ServiceText>{data.service.name}</ServiceText>
-        <ServiceText>
-          R$ {data.service.price.toFixed(2).replace('.', ',')}
-        </ServiceText>
-      </SplitArea>
-
-      <SplitArea>
-        <DateText>{dateString}</DateText>
-        <DateText>{time}</DateText>
-      </SplitArea>
+    <Area onPress={handleClick}>
+      {/* <Avatar source={{uri: data.avatar}} /> */}
+      <InfoArea>
+        <ServiceName>{data.name}</ServiceName>
+      </InfoArea>
     </Area>
   );
 };

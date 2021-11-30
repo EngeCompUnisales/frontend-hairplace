@@ -9,6 +9,7 @@ import MainTabBarber from './MainTabBarber';
 import Barber from '../pages/Barber';
 import Services from '../pages/Services';
 import Appointments from '../pages/Appointments';
+import GetAppointments from '../pages/GetAppointments';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ export default () => (
         <Stack.Screen name="MainTabBarber" component={MainTabBarber} />
         <Stack.Screen name="Barber" component={Barber} />
         <Stack.Screen name="Services" component={Services} />
-        <Stack.Screen name="Appointments" component={Appointments} />
+        <Stack.Screen name="GetAppointments" component={GetAppointments} />
 
     </Stack.Navigator>
 );

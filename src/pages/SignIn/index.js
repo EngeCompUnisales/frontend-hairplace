@@ -67,7 +67,7 @@ export default () => {
                         sendResponsibleId();
                         //handleMessageButtonClickLoginBarberSucess();
                     }else{
-                        handleMessageButtonClickLoginSucess();
+                        handleMessageButtonClickLoginSucess(response);
                     }
                     //handleMessageButtonClickLoginSucess();//remover dps
                 }else{
@@ -90,9 +90,11 @@ export default () => {
         });
     }
 
-    const handleMessageButtonClickLoginSucess = () => {
-        navigation.reset({
-            routes: [{name: 'MainTab'}]
+    const handleMessageButtonClickLoginSucess = (response) => {
+        navigation.navigate('MainTab', {
+            params: { 
+                id: response.data.id,
+                name: response.data.name }
         });
     }
 
