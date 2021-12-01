@@ -17,8 +17,17 @@ export const FieldCliente = styled.Text`
     font-size: 18px;
 `;
 
-export const AreaBotao = styled.TouchableOpacity`
+export const AreaBotaoFinalizar = styled.TouchableOpacity`
     height: 60px;
+    background-color: #00ff00;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const AreaBotaoCancelar = styled.TouchableOpacity`
+    height: 60px;
+    margin-top: 20px;
     background-color: #ff0000;
     border-radius: 10px;
     justify-content: center;
