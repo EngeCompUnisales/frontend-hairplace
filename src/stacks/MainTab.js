@@ -10,6 +10,7 @@ import Appointments from '../pages/Appointments';
 import Favorites from '../pages/Favorites';
 import Profile from '../pages/Profile';
 import SignUpBarber from '../pages/SignUpBarber';
+import GetAppointments from '../pages/GetAppointments';
 
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ export default () => (
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Appointments" component={Appointments} />
-        {/*<Tab.Screen name="Favorites" component={Favorites} />*/}
+        <Tab.Screen name="GetAppointments" component={GetAppointments} />
         <Tab.Screen name="Profile" component={Profile} />
         <Tab.Screen name="SignUpBarber" component={SignUpBarber} />
     </Tab.Navigator>
