@@ -36,9 +36,7 @@ export default () => {
     }
 
     const handleAgendamentoConcluir = () => {
-        const hora = "2021-12-01T02:26:35.488+00:00";
-        // Problema em finalizar, codigo 415
-        Api.put("/api/v1/agendamento/completed/" + paramID, hora);
+        Api.put("/api/v1/agendamento/completed/" + paramID);
     }
 
     // Colocar os dados no lugar dos campos
