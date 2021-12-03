@@ -35,18 +35,23 @@ const SeeProfileButtonText = styled.Text`
   color: #268596;
 `;
 
-export default ({data}) => {
-    const navigation = useNavigation();
-    const handleClick = () => {
-       
-    }
+export default ({ data }) => {
+  const navigation = useNavigation();
+  const handleClick = () => {
+    navigation.navigate('CancelAppointment', {
+        id: data.id
+    })
+}
 
   return (
     <Area onPress={handleClick}>
-      {/* <Avatar source={{uri: data.avatar}} /> */}
+      {<Avatar source={{ uri: data.avatar }} />}
       <InfoArea>
         <ServiceName>{data.name}</ServiceName>
       </InfoArea>
+      <SeeProfileButton>
+        <SeeProfileButtonText>Perfil</SeeProfileButtonText>
+      </SeeProfileButton>
     </Area>
   );
 };

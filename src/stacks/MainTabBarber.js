@@ -9,7 +9,7 @@ import Services from '../pages/Services';
 import ServicesC from '../pages/ServicesC';
 import Service from '../pages/Service';
 import Establishment from '../pages/Establishment';
-
+import CancelAppointment from '../pages/CancelAppointment'
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +21,7 @@ export default () => (
         <Tab.Screen name="Services" component={Services} />
         <Tab.Screen name="ServicesC" component={ServicesC} />
         <Tab.Screen name="Service" component={Service} />
+        <Tab.Screen name="CancelAppointment" component={CancelAppointment} />
 
     </Tab.Navigator>
 );

@@ -42,11 +42,11 @@ export default () => {
       <Scroller refreshControl={
         <RefreshControl refreshing={loading} onRefresh={getAppointments}/>
       }>
-        {/*<ListArea>
+        {<ListArea>
           {list.map((item, k) => (
             <AppointmentsItem data={item} key={k} />
           ))}
-        </ListArea> */}
+        </ListArea> }
       </Scroller>
 
     </Container>
