@@ -12,13 +12,17 @@ import { ButtonAgendamento,
     PageBody,
     UserInfoArea,
     UserInfoAreaText,
-    UserContactArea
+    UserContactArea,
+    UserContactAreaText
 } from './styles.js';
 
 export default (parametros) => {
     const navigation = useNavigation();
 
-
+    const [BarberInfo, setBarberInfo] = useState({
+        id: parametros.route.params.id,
+        name : parametros.route.params.name
+    })
 
 
 
@@ -26,19 +30,19 @@ export default (parametros) => {
         let res = await Api.get("/api/v1/estabelecimento/" + id);
         
         if(res.data != null){
-            console.log(res.data)
+            setBarberInfo(res.data);
         } else {
             alert("Oops: DEU RUIM")
         }
-        console.log("FIM: getBarber")
+
     };
 
-    getBarber(parametros.route.params.id) 
+    getBarber(parametros.route.params.id)
 
 
     const handleAgendamentoClick = () => { 
         console.log(parametros.route.params.id)
-        navigation.navigate('Appointments', {
+        navigation.navigate('Services', {
             id: parametros.route.params.id
 
         })
@@ -52,25 +56,37 @@ export default (parametros) => {
 
                 <HeaderArea>
                     <HeaderTitle >
-                        <Text >{parametros.route.params.name}</Text>
+                        <Text >{BarberInfo.name}</Text>
                     </HeaderTitle>
 
                 </HeaderArea>
        
                 <PageBody>
-                <   ButtonAgendamento onPress={handleAgendamentoClick}>
-                        <ButtonAgendamentoText>Fazer Agendamento</ButtonAgendamentoText>
-                    </ButtonAgendamento>
-                    <UserInfoArea>
+
+                <UserInfoArea>
                             <UserInfoAreaText>
-                            <Text >Descrição</Text>
+                                <Text >Descrição {"\n"}</Text>
+                                <Text >CNPJ: {BarberInfo.cnpj}</Text>
                             </UserInfoAreaText>
+
+                    <   ButtonAgendamento onPress={handleAgendamentoClick}>
+                        <ButtonAgendamentoText>Agendar Atendimento</ButtonAgendamentoText>
+
+                    </ButtonAgendamento>
+
                     </UserInfoArea>
-                    
+
                     <UserContactArea>
-                        
+                        <UserContactAreaText>
+                            <Text >Tell: {BarberInfo.numberCellphone}, {"\n"}</Text>
+                            <Text >Endereço: {BarberInfo.address}</Text>
+                        </UserContactAreaText>
+
                     </UserContactArea>
+                    
+
                 </PageBody>
+
 
             </Scroller>
         </Container>

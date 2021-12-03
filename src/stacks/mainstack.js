@@ -11,6 +11,7 @@ import Services from '../pages/Services';
 import Appointments from '../pages/Appointments';
 import GetAppointments from '../pages/GetAppointments';
 import CancelAppointment from '../pages/CancelAppointment';
+import CancelAppointmentUser from '../pages/CancelAppointmentUser';
 
 
 const Stack = createStackNavigator();
@@ -32,6 +33,7 @@ export default () => (
         <Stack.Screen name="GetAppointments" component={GetAppointments} />
         <Stack.Screen name="Appointments" component={Appointments} />
         <Stack.Screen name="CancelAppointment" component={CancelAppointment} />
+        <Stack.Screen name="CancelAppointmentUser" component={CancelAppointmentUser} />
 
     </Stack.Navigator>
 );

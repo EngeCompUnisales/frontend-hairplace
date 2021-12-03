@@ -53,7 +53,7 @@ export default () => {
                     if(responseEstablishment.data.length > 0){
                         
                         function sendResponsibleId() {
-                            console.log("perfil barbeiro")
+                            console.log("perfil Usuario")
                             console.log(response.data.id)
                             navigation.navigate('MainTabBarber', {
                                 screen: 'ProfileBarber',
@@ -67,9 +67,21 @@ export default () => {
                         sendResponsibleId();
                         //handleMessageButtonClickLoginBarberSucess();
                     }else{
-                        handleMessageButtonClickLoginSucess(response);
+                        //handleMessageButtonClickLoginSucess(response);
+                        function gotoMain(){
+                            console.log("perfil barbeiro")
+                            console.log(response.data.id)
+                            navigation.navigate('MainTab', {
+                                screen: 'ProfileUser',
+                                params: { 
+                                    id: response.data.id,
+                                    name: response.data.name }
+                            });
+                        }
+
+                        gotoMain();
                     }
-                    //handleMessageButtonClickLoginSucess();//remover dps
+                    //handleMessageButtonClickLoginSucess(); //remover dps
                 }else{
                     alert('E-mail ou senha errados');
                 }

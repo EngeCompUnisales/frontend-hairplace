@@ -16,9 +16,9 @@ import GetAppointments from '../pages/GetAppointments';
 const Tab = createBottomTabNavigator();
 
 
-export default () => (
+export default (parametros) => (
     <Tab.Navigator tabBar={props=><CustomTabBar {...props} />}>
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Home" component={Home}  initialParams= {parametros} />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Appointments" component={Appointments} />
         <Tab.Screen name="GetAppointments" component={GetAppointments} />

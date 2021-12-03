@@ -27,40 +27,66 @@ export const HeaderTitle = styled.Text`
     color: #000000;
 `;
 export const ButtonAgendamento = styled.TouchableOpacity`
-  width: 80%;
-  height: 40px;
-  background-color: #000000;
+  width: 50%;
+  height: 20px;
+  background-color: #000;
   
   margin:50px auto;
   border-radius: 30px;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 `;
 export const ButtonAgendamentoText = styled.Text`
-    font-size: 18px;
+    font-size: 13px;
     color: #FFF;
+    margin-top: -5px;
 `;
+
 export const PageBody = styled.View`
+    background-color: #FFFFFF;
+    
+    border-radius: 30px;
 
 
 `;
 
 export const UserContactArea = styled.View`
+    width: 300px;
+    height: 100px;
+    background-color: #D4D2D5;
+
+    margin:50px auto;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 170px;
+    margin-bottom: 30px;
+
 `;
+export const UserContactAreaText = styled.Text`
+   
+    font-size: 18px;
+    color: #FFF;
+
+
+`;
+
 
 export const UserInfoArea = styled.View`
 width: 300px;
-height: 40px;
-background-color: #000000;
+height: 100px;
+background-color: #FFF;
 
-margin:50px auto;
+margin:10% auto;
 border-radius: 30px;
 justify-content: center;
 align-items: center;
+margin-top: 10px;
 
 `;
 export const UserInfoAreaText = styled.Text`
-font-size: 18px;
-color: #FFF;
+font-size: 12px;
+color: #000;
+margin-top: 50px;
 `;
-

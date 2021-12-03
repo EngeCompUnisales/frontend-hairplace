@@ -16,7 +16,7 @@ import SearchIcon from '../../assets/search.svg';
 import Api from '../../Api';
 import BarberItem from '../../components/BarberItem.js';
 
-export default () => {
+export default (parametros) => {
   const navigation = useNavigation();
 
   const [coords, setCoords] = useState(null);
@@ -45,7 +45,9 @@ export default () => {
     setRefreshing(false)
     getBarbers()
   }
-
+    console.log('#############################################################');
+    console.log(parametros);
+    console.log('#############################################################');
   return (
     <Container>
       <Scroller refreshControl={
