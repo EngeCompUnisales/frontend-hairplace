@@ -4,10 +4,9 @@ import { Container, LoadingIcon } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 export default () => {
-
     const navigation = useNavigation();
 
-    useEffect(()=>{
+    useEffect(() => {
         const checkToken = async () => {
             navigation.navigate('SignIn');
         }
@@ -16,7 +15,7 @@ export default () => {
 
     return (
         <Container>
-            <Image source={require("../../assets/logo.png")}style = {{ width: "100%", height: 160 }}/>
+            <Image source={require("../../assets/logo.png")} style={{ width: "100%", height: 160 }} />
             <LoadingIcon size="large" color="#000000" />
         </Container>
     );

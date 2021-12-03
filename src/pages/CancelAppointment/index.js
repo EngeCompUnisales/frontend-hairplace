@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {
-  Container,
-  PrimeiroCampo,
-  FieldCliente,
-  AreaBotaoFinalizar,
-  AreaBotaoCancelar,
-  TextoBotao
-} from './styles.js';
+import React, { useState, useEffect } from 'react';
 import Api from '../../Api';
+import {
+    Container,
+    PrimeiroCampo,
+    FieldCliente,
+    AreaBotaoFinalizar,
+    AreaBotaoCancelar,
+    TextoBotao
+} from './styles.js';
 
 export default (res) => {
     const [AppointmentInfo, setAppointmentInfo] = useState({
@@ -19,23 +19,22 @@ export default (res) => {
 
     const getAgendamento = async (id) => {
         let ret = await Api.get("/api/v1/agendamento/" + id);
-        if(ret.data != null){
+        if (ret.data != null) {
             setAppointmentInfo(ret.data);
             return ret
-        }else{
-            console.log('Deu Ruim!')
+        } else {
+            alert("Oops: DEU RUIM")
         }
     };
+
     let data = getAgendamento(AppointmentInfo.id);
-    
-    const handleAgendamentoCancelar = () => {
-        Api.put("/api/v1/agendamento/cancel/" + paramID);
-    }
 
-    const handleAgendamentoConcluir = () => {
-        Api.put("/api/v1/agendamento/completed/" + paramID);
+    const handleAgendamentoCancelar = (id) => {
+        Api.put("/api/v1/agendamento/cancel/" + id);
     }
-
+    const handleAgendamentoConcluir = (id) => {
+        Api.put("/api/v1/agendamento/completed/" + id);
+    }
     // Colocar os dados no lugar dos campos
     return (
         <Container>
@@ -51,5 +50,4 @@ export default (res) => {
             </AreaBotaoCancelar>
         </Container>
     );
-
 }

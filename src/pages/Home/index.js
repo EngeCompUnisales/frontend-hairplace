@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Platform, RefreshControl} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import SearchIcon from '../../assets/search.svg';
+import Api from '../../Api';
+import BarberItem from '../../components/BarberItem.js';
 import {
   Container,
   Scroller,
@@ -10,20 +14,12 @@ import {
   ListArea
 } from './styles.js';
 
-import {useNavigation} from '@react-navigation/native';
-
-import SearchIcon from '../../assets/search.svg';
-import Api from '../../Api';
-import BarberItem from '../../components/BarberItem.js';
-
 export default (parametros) => {
   const navigation = useNavigation();
-
   const [coords, setCoords] = useState(null);
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-
   useEffect(()=>{
     getBarbers()
   },[])
@@ -31,7 +27,6 @@ export default (parametros) => {
   const getBarbers = async () => {
     setLoading(true)
     setList([])
-
     let res = await Api.get("/api/v1/estabelecimento/");
       if(res != null){
           setList(res.data)
@@ -45,9 +40,7 @@ export default (parametros) => {
     setRefreshing(false)
     getBarbers()
   }
-    console.log('#############################################################');
-    console.log(parametros);
-    console.log('#############################################################');
+  
   return (
     <Container>
       <Scroller refreshControl={
@@ -61,9 +54,7 @@ export default (parametros) => {
             <SearchIcon width="26" height="26" fill="#FFFFFF" />
           </SearchButton>
         </HeaderArea>
-
         {loading && <LoadingIcon size="large" color="#FFFFFF" />}
-
         <ListArea>
           {list.map((item, key) => (
             <BarberItem key={key} data={item} />

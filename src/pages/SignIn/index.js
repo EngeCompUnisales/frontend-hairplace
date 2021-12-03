@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../contexts/UserContext';
+import api from '../../Api';
+import SignInput from '../../components/SignInput';
 import {
     Container,
     InputArea,
@@ -11,8 +13,6 @@ import {
     SignMessageButtonText,
     SignMessageButtonTextBold
 } from './styles';
-import api from '../../Api';
-import SignInput from '../../components/SignInput';
 
 export default () => {
     const { dispatch: userDispatch } = useNavigation(UserContext);
@@ -33,8 +33,6 @@ export default () => {
                     const responseEstablishment = await api.get("/api/v1/estabelecimento/responsible/" + response.data.id);
                     if (responseEstablishment.data.length > 0) {
                         function sendResponsibleId() {
-                            console.log("perfil Usuario")
-                            console.log(response.data.id)
                             navigation.navigate('MainTabBarber', {
                                 screen: 'ProfileBarber',
                                 params: {
@@ -45,23 +43,22 @@ export default () => {
                         }
                         sendResponsibleId();
                         //handleMessageButtonClickLoginBarberSucess();
-                    }else{
+                    } else {
                         //handleMessageButtonClickLoginSucess(response);
-                        function gotoMain(){
-                            console.log("perfil barbeiro")
-                            console.log(response.data.id)
+                        function gotoMain() {
                             navigation.navigate('MainTab', {
                                 screen: 'ProfileUser',
-                                params: { 
+                                params: {
                                     id: response.data.id,
-                                    name: response.data.name }
+                                    name: response.data.name
+                                }
                             });
                         }
 
                         gotoMain();
                     }
                     //handleMessageButtonClickLoginSucess(); //remover dps
-                }else{
+                } else {
                     alert('E-mail ou senha errados');
                 }
 

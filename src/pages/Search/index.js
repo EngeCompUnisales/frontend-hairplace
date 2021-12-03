@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import BarberItem from '../../components/BarberItem';
+import ServiceItem from '../../components/ServiceItem';
+import Api from '../../Api';
 import {
   Container,
   SearchArea,
@@ -9,9 +12,6 @@ import {
   EmptyWarning,
   HeaderTitle,
 } from './styles';
-import BarberItem from '../../components/BarberItem';
-import ServiceItem from '../../components/ServiceItem';
-import Api from '../../Api';
 
 export default () => {
   const [searchText, setSearchText] = useState('');
@@ -29,7 +29,6 @@ export default () => {
     setLoadingS(true);
     setListE([]);
     setListS([]);
-
     if (searchText != '') {
       let res = await Api.get("/api/v1/estabelecimento/find/" + searchText);
       console.log(res.data)
@@ -40,7 +39,6 @@ export default () => {
       }
     }
     setLoadingE(false);
-
     if (searchText != '') {
       let res2 = await Api.get("/api/v1/servico/find/" + searchText);
       console.log(res2.data)
@@ -83,7 +81,6 @@ export default () => {
           ))}
         </ListArea>
       </Scroller>
-
       <Scroller>
         {loadingS && <LoadingIcon size="large" color="#000000" />}
         {emptyListS && (

@@ -1,35 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
-import { 
-Container,
-Scroller,
-ListArea 
-} from './styles';
 import { RefreshControl } from 'react-native'
 import AppointmentsItem from '../../components/AppointmentsItem';
-
 import api from '../../Api';
+import {
+  Container,
+  Scroller,
+  ListArea
+} from './styles';
 
 export default () => {
-
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false)
-
-  useEffect(()=>{
+  useEffect(() => {
     getAppointments()
-  },[])
-
+  }, [])
   const getAppointments = async () => {
     setLoading(true);
     setList([]);
-
     const response = await api.get("/api/v1/agendamento")
-
-    console.log(response.data)
-
-    if(response.data != null) {        
+    if (response.data != null) {
       setList(response.data)
-    }else{
+    } else {
       alert("Erro Ao recuperar os Agendamentos ")
     }
     setLoading(false);
@@ -38,17 +30,15 @@ export default () => {
   return (
     <Container>
       <Text>Horarios agendado do barbeiro</Text>
-
       <Scroller refreshControl={
-        <RefreshControl refreshing={loading} onRefresh={getAppointments}/>
+        <RefreshControl refreshing={loading} onRefresh={getAppointments} />
       }>
         {<ListArea>
           {list.map((item, k) => (
             <AppointmentsItem data={item} key={k} />
           ))}
-        </ListArea> }
+        </ListArea>}
       </Scroller>
-
     </Container>
   );
 }

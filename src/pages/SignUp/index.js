@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-
-
+import SignInput from '../../components/SignInput';
+import api from '../../Api';
 import {
     Container,
     InputArea,
@@ -11,15 +11,8 @@ import {
     SignMessageButtonTextBold
 } from './styles';
 
-import SignInput from '../../components/SignInput';
-import api from '../../Api';
-
-
-
 export default () => {
-
     const navigation = useNavigation();
-
     const [emailField, setEmailField] = useState('');
     const [nameField, setNameField] = useState('');
     const [passwordField, setPasswordField] = useState('');
@@ -27,47 +20,38 @@ export default () => {
     const [numberField, setNumberField] = useState('');
     const [birthDateField, setBirthDateField] = useState('');
 
-    
     const handleMessageButtonClick = () => {
         navigation.reset({
-            routes: [{name: 'SignIn'}]
+            routes: [{ name: 'SignIn' }]
         });
     }
 
     const handleMessageButtonClickLoginSucess = () => {
         navigation.reset({
-            routes: [{name: 'MainTab'}]
+            routes: [{ name: 'MainTab' }]
         });
     }
 
-
     const handleSingClick = async () => {
-        if(emailField != '' && nameField != '' && passwordField != '' && cpfField != '' && numberField != '' ) {
-
+        if (emailField != '' && nameField != '' && passwordField != '' && cpfField != '' && numberField != '') {
             try {
-
                 const dataProfile = {
                     email: emailField,
                     password: passwordField,
-                    birthDate : "2021-10-27T23:31:10.352+00:00",
+                    birthDate: "2021-10-27T23:31:10.352+00:00",
                     cpf: cpfField,
                     name: nameField,
                     numberCellphone: numberField
                 }
-
                 console.log("TESTE")
-                const response = await api.post("/api/v1/user", dataProfile) 
-
+                const response = await api.post("/api/v1/user", dataProfile)
                 console.log(response.data)
-
-                if(response.data != null) {        
+                if (response.data != null) {
                     handleMessageButtonClickLoginSucess()
                 }
-                   
             } catch (err) {
                 alert('Erro no Login, Tente novamente!' + err);
             }
-
         } else {
             alert("Preencha os campos");
         }
@@ -75,55 +59,43 @@ export default () => {
 
     return (
         <Container>
-
             <InputArea>
-                
-                <SignInput 
+                <SignInput
                     placeholder="Digite seu nome"
                     value={nameField}
-                    onChangeText={t=>setNameField(t)}
+                    onChangeText={t => setNameField(t)}
                 />
-
-                <SignInput 
+                <SignInput
                     placeholder="Digite seu email"
                     value={emailField}
-                    onChangeText={t=>setEmailField(t)}
+                    onChangeText={t => setEmailField(t)}
                 />
-                <SignInput 
+                <SignInput
                     placeholder="Digite sua senha"
                     valeu={passwordField}
-                    onChangeText={t=>setPasswordField(t)}
+                    onChangeText={t => setPasswordField(t)}
                     password={true}
                 />
-
-                <SignInput  
+                <SignInput
                     placeholder="Digite seu cpf"
                     value={cpfField}
-                   onChangeText={t=>setCpfField(t)}
+                    onChangeText={t => setCpfField(t)}
                 />
-                
-                <SignInput 
+                <SignInput
                     placeholder="Numero de Celular "
                     value={numberField}
-                    onChangeText={t=>setNumberField(t)}
+                    onChangeText={t => setNumberField(t)}
                 />
-                
-                
                 {/* <DateInput 
-                    value={birthDateField}
+                value={birthDateField}
                 /> */}
-                
-
                 <CustomButton onPress={handleSingClick}>
                     <CustomButtonText>Cadastrar</CustomButtonText>
                 </CustomButton>
-
                 <SignMessageButton onPress={handleMessageButtonClick}>
                     <SignMessageButtonTextBold>Voltar</SignMessageButtonTextBold>
                 </SignMessageButton>
-            
             </InputArea>
-
         </Container>
     );
 }
