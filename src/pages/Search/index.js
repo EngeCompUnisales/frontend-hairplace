@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BarberItem from '../../components/BarberItem';
-import ServiceItem from '../../components/ServiceItem';
+import SearchServiceItem from '../../components/SearchServiceItem'
 import Api from '../../Api';
 import {
   Container,
@@ -93,7 +93,7 @@ export default () => {
         </HeaderTitle>
         <ListArea>
           {listS.map((item, k) => (
-            <ServiceItem data={item} key={k} />
+            <SearchServiceItem data={item} key={k} />
           ))}
         </ListArea>
       </Scroller>
