@@ -33,7 +33,7 @@ export default (parametros) => {
     };
     getBarber(parametros.route.params.id)
     const handleAgendamentoClick = () => {
-        navigation.navigate('Services', {
+        navigation.navigate('ServicesList', {
             id: parametros.route.params.id
         })
     }

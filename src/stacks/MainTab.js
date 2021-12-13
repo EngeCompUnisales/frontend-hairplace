@@ -8,12 +8,14 @@ import Favorites from '../pages/Favorites';
 import Profile from '../pages/Profile';
 import SignUpBarber from '../pages/SignUpBarber';
 import GetAppointments from '../pages/GetAppointments';
+import ServicesList from '../pages/ServicesList';
 const Tab = createBottomTabNavigator();
 
 export default (parametros) => (
     <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
         <Tab.Screen name="Home" component={Home} initialParams={parametros} />
         <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="ServicesList" component={ServicesList} />
         <Tab.Screen name="Appointments" component={Appointments} />
         <Tab.Screen name="GetAppointments" component={GetAppointments} />
         <Tab.Screen name="Profile" component={Profile} />

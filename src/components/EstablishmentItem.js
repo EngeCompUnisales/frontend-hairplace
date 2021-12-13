@@ -22,7 +22,7 @@ export default ({ data }) => {
         <Cnpj>CNPJ: {data.cnpj}</Cnpj>
         <Telefone>Telefone: {data.numberCellphone}</Telefone>
         <SeeProfileButton>
-          <SeeProfileButtonText>Ver Mais</SeeProfileButtonText>
+          <SeeProfileButtonText>Editar</SeeProfileButtonText>
         </SeeProfileButton>
       </InfoArea>
     </Area>
