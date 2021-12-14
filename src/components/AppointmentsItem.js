@@ -6,7 +6,7 @@ export default ({ data }) => {
   const navigation = useNavigation();
   const handleClick = () => {
     navigation.navigate('CancelAppointment', {
-        id: data.id
+        id: data.id 
     })
 }
 
@@ -16,9 +16,6 @@ export default ({ data }) => {
       <InfoArea>
         <ServiceName>{data.name}</ServiceName>
       </InfoArea>
-      <SeeProfileButton>
-        <SeeProfileButtonText>Perfil</SeeProfileButtonText>
-      </SeeProfileButton>
     </Area>
   );
 };

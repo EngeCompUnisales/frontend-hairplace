@@ -11,9 +11,7 @@ import { TabArea, TabItem } from '../components/styles.js';
 export default ({ state, navigation }) => {
     const { state: user } = useContext(UserContext);
     const goTo = (screenName) => {
-        navigation.navigate(screenName, {
-            userId: 28
-        })
+        navigation.navigate(screenName)
     }
 
     return (

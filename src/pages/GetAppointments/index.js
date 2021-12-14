@@ -11,7 +11,7 @@ import {
   ListArea
 } from './styles.js';
 
-export default (route) => {
+export default (data) => {
   const [list, setList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,9 @@ export default (route) => {
   const getAppointments = async () => {
     setLoading(true)
     setList([])
-    let res = await Api.get("/api/v1/agendamentos/cliente/" + route.params.userId);
+    console.log(data.route.params.route.params.params.id)
+    let res = await Api.get("/api/v1/agendamentos/cliente/" + data.route.params.route.params.params.id);
+    console.log(res.data)
     if (res.data != null) {
       setList(res.data)
     } else {

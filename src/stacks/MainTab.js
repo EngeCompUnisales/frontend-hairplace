@@ -17,7 +17,7 @@ export default (parametros) => (
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="ServicesList" component={ServicesList} />
         <Tab.Screen name="Appointments" component={Appointments} />
-        <Tab.Screen name="GetAppointments" component={GetAppointments} />
+        <Tab.Screen name="GetAppointments" component={GetAppointments} initialParams={parametros}/>
         <Tab.Screen name="Profile" component={Profile} />
         <Tab.Screen name="SignUpBarber" component={SignUpBarber} />
     </Tab.Navigator>
